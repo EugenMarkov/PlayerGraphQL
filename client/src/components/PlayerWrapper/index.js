@@ -35,6 +35,7 @@ const PlayerWraper = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [play, setPlay] = useState(false);
   const [audio, setAudio] = useState(false);
+  const [message, setMessage] = useState("");
 
   const player = useRef(null);
 
@@ -72,14 +73,24 @@ const PlayerWraper = () => {
     if (play) {
       setPlay(false);
       setTimeout(function () {
-        console.log(player.current.props.playing);
-        if (!player.current.props.playing) stopMovie({variables: { id}});
+        if (player.current === null) {
+          return
+        }
+        if (!player.current.props.playing) stopMovie({variables: { id}})
+        .then( ({ data: { stopMovie: { message }, }, }) => {
+          console.log(message);
+          setMessage(message);
+        })
+          .catch(error => {
+            console.log(error);
+          });
       },  30000);
     } else {
       playMovie({variables: { id }})
         .then(
           ({ data: { playMovie: { message, status }, }, }) => {
             console.log(message);
+            setMessage(message);
             if (status === "success" && message === "You can watch movie") {
               setPlay(true);
             }
@@ -156,7 +167,9 @@ const PlayerWraper = () => {
               {audio ? "Add video" : "Audio only"}
             </Button>
           </div>
-
+          <Typography className={classes.message}>
+            {message}
+          </Typography>
         </div>
       ) : (
         <Typography variant="h3" className={classes.emptyPlayerList}>

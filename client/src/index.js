@@ -5,9 +5,8 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core/styles";
 import ApolloClient from "apollo-boost";
-import { InMemoryCache, NormalizedCacheObject } from "apollo-cache-inmemory";
-import { HttpLink } from "apollo-link-http";
-import { ApolloProvider, useQuery } from "@apollo/react-hooks";
+import { InMemoryCache } from "apollo-cache-inmemory";
+import { ApolloProvider } from "@apollo/react-hooks";
 import { resolvers, typeDefs } from "./resolvers";
 
 

@@ -43,12 +43,12 @@ module.exports =  {
         const { isValid } = validateRegistrationForm(args);
 
         if (!isValid) {
-          return { message: "data is not valid", status: "fail" };
+          return { user: { name: "" , id: ""}, message: "Data is not valid", status: "fail" };
         }
         const customer = await User.findOne({ $or: [{ email: args.email }] });
 
         if (!customer) {
-          return { message: "Customer not found", status: "fail" };
+          return { user: { name: "" , id: ""}, message: "User not found", status: "fail" };
         }
 
         const isMatch = await bcrypt.compare(args.password, customer.password);
@@ -111,7 +111,7 @@ module.exports =  {
             console.log("YES again");
             return { message: "You can watch movie", status: "success" };
           } else {
-            return { message: "Try again later", status: "fail" };
+            return { message: "Somebody is watching. Try again later", status: "fail" };
           }
         } else {
           await User.findByIdAndUpdate(

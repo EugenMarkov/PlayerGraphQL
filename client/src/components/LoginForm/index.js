@@ -41,7 +41,7 @@ const LoginForm = ({ isModalOpen, setIsModalOpen }) => {
       )
       .catch(error => {
         console.log(error);
-        setMessage("Error. Something went wrong");
+        setMessage("Server Error. Something went wrong");
       });
   };
 
