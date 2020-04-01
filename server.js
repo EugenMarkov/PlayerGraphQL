@@ -9,7 +9,7 @@ const resolvers = require('./graphql/resolvers');
 const server = new ApolloServer({ typeDefs, resolvers });
 const app = express();
 app.use(cors());
-server.applyMiddleware({ app });
+server.applyMiddleware({ path: "/api/graphql", app });
 const db = require("./config/keys").mongoURI;
 
 
