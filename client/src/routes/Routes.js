@@ -5,13 +5,10 @@ import { useApolloClient } from "@apollo/react-hooks";
 import isExpired from "../components/common/isExpired/isExpired";
 
 import HomePage from "../pages/HomePage/HomePage";
-// import ProfilePage from "../pages/ProfilePage/ProfilePage";
 import RegistrationPage from "../pages/RegistrationPage/RegistrationPage";
-// import { AuthHOC } from "../components/common/HOC/AuthHOC";
 import { RegistrationHOCWrapper } from "../components/common/HOC/RegistrationHOCWrapper";
-import Preloader from "../components/Preloader";
 
-const Routes = ({ isPreloader }) => {
+const Routes = () => {
   const client = useApolloClient();
 
   useEffect(() => {
@@ -32,12 +29,9 @@ const Routes = ({ isPreloader }) => {
     }
   }, [client]);
 
-  return isPreloader ? (
-    <Preloader />
-  ) : (
+  return  (
     <Switch>
       <Route exact path="/" component={HomePage} />
-      {/*<Route path="/profile" component={AuthHOC(ProfilePage)} />*/}
       <Route path="/registration" component={RegistrationHOCWrapper(RegistrationPage)} />
       <Redirect to="/" />
     </Switch>

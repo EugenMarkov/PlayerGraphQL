@@ -96,9 +96,6 @@ const ProfileMenu = () => {
                   <Link to="/" className={classes.text}>
                     <MenuItem onClick={handleClose}>Home</MenuItem>
                   </Link>
-                  {/*<Link to="/profile" className={classes.text}>*/}
-                  {/*  <MenuItem onClick={handleClose}>Profile</MenuItem>*/}
-                  {/*</Link>*/}
                   <MenuItem className={classes.text} onClick={profileLogOut}>
                     Logout
                   </MenuItem>
