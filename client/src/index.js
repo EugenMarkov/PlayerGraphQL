@@ -19,7 +19,7 @@ const cache = new InMemoryCache();
 
 const client = new ApolloClient({
   cache,
-  uri: "/graphql",
+  uri: "/api/graphql",
   resolvers,
   typeDefs,
 });
