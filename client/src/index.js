@@ -19,7 +19,7 @@ const cache = new InMemoryCache();
 
 const client = new ApolloClient({
   cache,
-  uri: "https://playergraphql.herokuapp.com/api/graphql",
+  uri: "https://playergraphql.herokuapp.com/api",
   resolvers,
   typeDefs,
 });
