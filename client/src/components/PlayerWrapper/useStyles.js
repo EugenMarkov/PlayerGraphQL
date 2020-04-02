@@ -41,6 +41,14 @@ const useStyles = makeStyles(theme => ({
       color: "white",
     },
   },
+  message: {
+    fontSize: 18,
+    minHeight: 54,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+  },
   emptyPlayerList: {
     minHeight: 300,
     display: "flex",
